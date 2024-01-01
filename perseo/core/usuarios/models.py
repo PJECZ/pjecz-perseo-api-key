@@ -40,6 +40,39 @@ class Usuario(Base, UniversalMixin):
     tareas = relationship("Tarea", back_populates="usuario")
     usuarios_roles = relationship("UsuarioRol", back_populates="usuario")
 
+    @property
+    def nombre(self):
+        """Junta nombres, apellido_primero y apellido_segundo"""
+        return self.nombres + " " + self.apellido_primero + " " + self.apellido_segundo
+
+    @property
+    def rol_nombre(self):
+        """Nombre del rol"""
+        return self.rol.nombre
+
+    @classmethod
+    def find_by_identity(cls, identity):
+        """Encontrar a un usuario por su correo electrónico"""
+        return Usuario.query.filter(Usuario.email == identity).first()
+
+    @property
+    def is_active(self):
+        """¿Es activo?"""
+        return self.estatus == "A"
+
+    @property
+    def permissions(self):
+        """Permisos"""
+        return self.rol.permissions
+
+    def can(self, perm):
+        """¿Tiene permiso?"""
+        return self.rol.has_permission(perm)
+
+    def can_view(self, module):
+        """¿Tiene permiso para ver?"""
+        return self.rol.can_view(module)
+
     def __repr__(self):
         """Representación"""
         return f"<Usuario {self.email}>"
