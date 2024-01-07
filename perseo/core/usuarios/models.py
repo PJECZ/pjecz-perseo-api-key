@@ -41,14 +41,44 @@ class Usuario(Base, UniversalMixin):
     usuarios_roles = relationship("UsuarioRol", back_populates="usuario")
 
     @property
+    def distrito_id(self):
+        """Distrito ID"""
+        return self.autoridad.distrito_id
+
+    @property
+    def distrito_clave(self):
+        """Distrito clave"""
+        return self.autoridad.distrito.clave
+
+    @property
+    def distrito_nombre(self):
+        """Distrito nombre"""
+        return self.autoridad.distrito.nombre
+
+    @property
+    def distrito_nombre_corto(self):
+        """Distrito nombre corto"""
+        return self.autoridad.distrito.nombre_corto
+
+    @property
+    def autoridad_clave(self):
+        """Autoridad clave"""
+        return self.autoridad.clave
+
+    @property
+    def autoridad_descripcion(self):
+        """Autoridad descripción"""
+        return self.autoridad.descripcion
+
+    @property
+    def autoridad_descripcion_corta(self):
+        """Autoridad descripción corta"""
+        return self.autoridad.descripcion_corta
+
+    @property
     def nombre(self):
         """Junta nombres, apellido_primero y apellido_segundo"""
         return self.nombres + " " + self.apellido_primero + " " + self.apellido_segundo
-
-    @property
-    def rol_nombre(self):
-        """Nombre del rol"""
-        return self.rol.nombre
 
     @classmethod
     def find_by_identity(cls, identity):
