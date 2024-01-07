@@ -11,9 +11,18 @@ from lib.safe_string import safe_clave
 from ...core.distritos.models import Distrito
 
 
-def get_distritos(database: Session) -> Any:
+def get_distritos(
+    database: Session,
+    es_distrito: bool = None,
+    es_jurisdiccional: bool = None,
+) -> Any:
     """Consultar los distritos activos"""
-    return database.query(Distrito).filter_by(estatus="A").order_by(Distrito.clave)
+    consulta = database.query(Distrito)
+    if es_distrito is not None:
+        consulta = consulta.filter_by(es_distrito=es_distrito)
+    if es_jurisdiccional is not None:
+        consulta = consulta.filter_by(es_jurisdiccional=es_jurisdiccional)
+    return consulta.filter_by(estatus="A").order_by(Distrito.clave)
 
 
 def get_distrito(database: Session, distrito_id: int) -> Distrito:

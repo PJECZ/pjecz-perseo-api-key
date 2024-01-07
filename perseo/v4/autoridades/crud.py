@@ -16,6 +16,7 @@ def get_autoridades(
     database: Session,
     distrito_id: int = None,
     distrito_clave: str = None,
+    es_extinto: bool = None,
 ) -> Any:
     """Consultar los autoridades activos"""
     consulta = database.query(Autoridad)
@@ -25,7 +26,9 @@ def get_autoridades(
     elif distrito_clave is not None:
         distrito = get_distrito_with_clave(database, distrito_clave)
         consulta = consulta.filter_by(distrito_id=distrito.id)
-    return consulta.filter_by(estatus="A").order_by(Autoridad.id)
+    if es_extinto is not None:
+        consulta = consulta.filter_by(es_extinto=es_extinto)
+    return consulta.filter_by(estatus="A").order_by(Autoridad.clave)
 
 
 def get_autoridad(database: Session, autoridad_id: int) -> Autoridad:
