@@ -9,7 +9,7 @@ from lib.schemas_base import OneBaseOut
 class TareaOut(BaseModel):
     """Esquema para entregar tareas"""
 
-    id: int | None = None
+    id: str | None = None  # El id es string y es el mismo que usa el RQ worker
     usuario_id: int | None = None
     usuario_email: str | None = None
     comando: str | None = None

@@ -66,6 +66,15 @@ class TestUsuarios(unittest.TestCase):
         )
         self.assertEqual(response.status_code, 200)
 
+    def test_get_tareas(self):
+        """Test GET method for tareas"""
+        response = requests.get(
+            f"{config['api_base_url']}/tareas",
+            headers={"X-Api-Key": config["api_key"]},
+            timeout=config["timeout"],
+        )
+        self.assertEqual(response.status_code, 200)
+
     def test_get_usuarios(self):
         """Test GET method for usuarios"""
         response = requests.get(
