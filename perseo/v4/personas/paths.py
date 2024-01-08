@@ -23,6 +23,11 @@ async def paginado_personas(
     current_user: Annotated[UsuarioInDB, Depends(get_current_active_user)],
     database: Annotated[Session, Depends(get_db)],
     tabulador_id: int = None,
+    rfc: str = None,
+    nombres: str = None,
+    apellido_primero: str = None,
+    apellido_segundo: str = None,
+    curp: str = None,
 ):
     """Paginado de personas"""
     if current_user.permissions.get("PERSONAS", 0) < Permiso.VER:
@@ -31,6 +36,11 @@ async def paginado_personas(
         resultados = get_personas(
             database=database,
             tabulador_id=tabulador_id,
+            rfc=rfc,
+            nombres=nombres,
+            apellido_primero=apellido_primero,
+            apellido_segundo=apellido_segundo,
+            curp=curp,
         )
     except MyAnyError as error:
         return CustomPage(success=False, message=str(error))
