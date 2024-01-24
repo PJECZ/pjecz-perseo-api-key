@@ -33,6 +33,21 @@ class Timbrado(Base, UniversalMixin):
     archivo_xml = Column(String(256), nullable=False, default="", server_default="")
     url_xml = Column(String(512), nullable=False, default="", server_default="")
 
+    @property
+    def nomina_fecha_pago(self):
+        """Fecha de pago de la nómina"""
+        return self.nomina.fecha_pago
+
+    @property
+    def persona_curp(self):
+        """CURP de la persona"""
+        return self.nomina.persona.curp
+
+    @property
+    def persona_rfc(self):
+        """RFC de la persona"""
+        return self.nomina.persona.rfc
+
     def __repr__(self):
         """Representación"""
         return f"<Timbrado {self.id}>"

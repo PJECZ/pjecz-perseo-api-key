@@ -29,8 +29,22 @@ class Nomina(Base, UniversalMixin):
     persona = relationship("Persona", back_populates="nominas")
 
     # Columnas
+    fecha_pago = Column(Date(), nullable=False)
     tipo = Column(Enum(*TIPOS, name="nominas_tipos"), nullable=False, index=True)
     timbrado_id = Column(Integer())  # Pueder ser nulo o el ID del Timbrado
+
+    # Hijos
+    timbrados = relationship("Timbrado", back_populates="nomina")
+
+    @property
+    def persona_curp(self):
+        """CURP de la persona"""
+        return self.persona.curp
+
+    @property
+    def persona_rfc(self):
+        """RFC de la persona"""
+        return self.persona.rfc
 
     def __repr__(self):
         """Representación"""
