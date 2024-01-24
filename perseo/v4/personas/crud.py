@@ -75,3 +75,17 @@ def get_persona_with_rfc(database: Session, persona_rfc: str) -> Persona:
     if persona.estatus != "A":
         raise MyIsDeletedError("No es activa ese persona, está eliminada")
     return persona
+
+
+def get_persona_with_curp(database: Session, persona_curp: str) -> Persona:
+    """Consultar una persona por su CURP"""
+    try:
+        curp = safe_curp(persona_curp)
+    except ValueError as error:
+        raise MyNotValidParamError(str(error)) from error
+    persona = database.query(Persona).filter_by(curp=curp).first()
+    if persona is None:
+        raise MyNotExistsError("No existe ese persona")
+    if persona.estatus != "A":
+        raise MyIsDeletedError("No es activa ese persona, está eliminada")
+    return persona
