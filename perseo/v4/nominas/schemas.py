@@ -1,6 +1,8 @@
 """
 Nominas v4, esquemas de pydantic
 """
+from datetime import date
+
 from pydantic import BaseModel, ConfigDict
 
 from lib.schemas_base import OneBaseOut
@@ -13,6 +15,7 @@ class NominaOut(BaseModel):
     persona_id: int | None = None
     persona_curp: str | None = None
     persona_rfc: str | None = None
+    fecha_pago: date | None = None
     tipo: str | None = None
     timbrado_id: int | None = None
     model_config = ConfigDict(from_attributes=True)

@@ -47,7 +47,7 @@ class Persona(Base, UniversalMixin):
     modelo = Column(Integer, nullable=False, index=True)
 
     # Hijos
-    nominas = relationship("Nomina", back_populates="personas")
+    nominas = relationship("Nomina", back_populates="persona")
 
     @property
     def nombre_completo(self):
