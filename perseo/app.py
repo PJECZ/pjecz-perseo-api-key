@@ -12,12 +12,14 @@ from .v4.bitacoras.paths import bitacoras
 from .v4.distritos.paths import distritos
 from .v4.entradas_salidas.paths import entradas_salidas
 from .v4.modulos.paths import modulos
+from .v4.nominas.paths import nominas
 from .v4.permisos.paths import permisos
 from .v4.personas.paths import personas
 from .v4.puestos.paths import puestos
 from .v4.roles.paths import roles
 from .v4.tabuladores.paths import tabuladores
 from .v4.tareas.paths import tareas
+from .v4.timbrados.paths import timbrados
 from .v4.usuarios.paths import usuarios
 from .v4.usuarios_roles.paths import usuarios_roles
 
@@ -49,12 +51,14 @@ def create_app() -> FastAPI:
     app.include_router(distritos)
     app.include_router(entradas_salidas)
     app.include_router(modulos)
+    app.include_router(nominas)
     app.include_router(permisos)
     app.include_router(personas)
     app.include_router(puestos)
     app.include_router(roles)
     app.include_router(tabuladores)
     app.include_router(tareas)
+    app.include_router(timbrados)
     app.include_router(usuarios)
     app.include_router(usuarios_roles)
 

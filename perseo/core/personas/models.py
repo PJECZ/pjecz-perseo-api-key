@@ -46,6 +46,9 @@ class Persona(Base, UniversalMixin):
     # 3: Jubilado
     modelo = Column(Integer, nullable=False, index=True)
 
+    # Hijos
+    nominas = relationship("Nomina", back_populates="personas")
+
     @property
     def nombre_completo(self):
         """Nombre completo"""
