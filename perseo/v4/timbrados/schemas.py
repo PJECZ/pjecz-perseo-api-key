@@ -14,6 +14,7 @@ class TimbradoOut(BaseModel):
     id: int | None = None
     nomina_id: int | None = None
     nomina_fecha_pago: date | None = None
+    nomina_tipo: str | None = None
     persona_rfc: str | None = None
     persona_curp: str | None = None
     estado: str | None = None
