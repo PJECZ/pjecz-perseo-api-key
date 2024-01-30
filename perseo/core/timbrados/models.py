@@ -39,6 +39,11 @@ class Timbrado(Base, UniversalMixin):
         return self.nomina.fecha_pago
 
     @property
+    def nomina_tipo(self):
+        """Tipo de la nómina"""
+        return self.nomina.tipo
+
+    @property
     def persona_curp(self):
         """CURP de la persona"""
         return self.nomina.persona.curp
