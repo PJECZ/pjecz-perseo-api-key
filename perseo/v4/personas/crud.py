@@ -1,6 +1,7 @@
 """
 Personas v4, CRUD (create, read, update, and delete)
 """
+
 from typing import Any
 
 from sqlalchemy.orm import Session
@@ -78,14 +79,12 @@ def get_persona_with_rfc(database: Session, persona_rfc: str) -> Persona:
 
 
 def get_persona_with_curp(database: Session, persona_curp: str) -> Persona:
-    """Consultar una persona por su CURP"""
+    """Consultar una persona por su CURP (porque el CURP no es único, se obtiene la primera coincidencia con estatus A)"""
     try:
         curp = safe_curp(persona_curp)
     except ValueError as error:
         raise MyNotValidParamError(str(error)) from error
-    persona = database.query(Persona).filter_by(curp=curp).first()
+    persona = database.query(Persona).filter_by(curp=curp).filter_by(estatus="A").first()
     if persona is None:
         raise MyNotExistsError("No existe ese persona")
-    if persona.estatus != "A":
-        raise MyIsDeletedError("No es activa ese persona, está eliminada")
     return persona
