@@ -1,6 +1,7 @@
 """
 Timbrados, modelos
 """
+
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
