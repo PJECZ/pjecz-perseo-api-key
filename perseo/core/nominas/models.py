@@ -1,7 +1,8 @@
 """
 Nominas, modelos
 """
-from sqlalchemy import Column, Date, Enum, ForeignKey, Integer, Numeric, String
+
+from sqlalchemy import Column, Date, Enum, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 
 from lib.database import Base
@@ -16,6 +17,7 @@ class Nomina(Base, UniversalMixin):
         "APOYO ANUAL": "APOYO ANUAL",
         "DESPENSA": "DESPENSA",
         "SALARIO": "SALARIO",
+        "EXTRAORDINARIO": "EXTRAORDINARIO",
     }
 
     # Nombre de la tabla

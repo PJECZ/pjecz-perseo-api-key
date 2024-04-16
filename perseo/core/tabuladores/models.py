@@ -1,6 +1,7 @@
 """
 Tabuladores, modelos
 """
+
 from sqlalchemy import Column, Date, ForeignKey, Integer, Numeric
 from sqlalchemy.orm import relationship
 

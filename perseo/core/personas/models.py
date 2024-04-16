@@ -1,6 +1,7 @@
 """
 Personas, modelos
 """
+
 from sqlalchemy import Column, Date, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
@@ -14,7 +15,10 @@ class Persona(Base, UniversalMixin):
     MODELOS = {
         1: "CONFIANZA",
         2: "SINDICALIZADO",
-        3: "JUBILADO",
+        3: "PENSIONADO",
+        4: "BENEFICIARIO PENSION ALIMENTICIA",
+        5: "ASIMILADO A SALARIOS",
+        6: "EXTRAORDINARIO",
     }
 
     # Nombre de la tabla
