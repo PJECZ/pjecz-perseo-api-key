@@ -11,6 +11,7 @@
 *.xlsx
 
 __pycache__/
+/.idea
 /.git
 /.github
 /.venv

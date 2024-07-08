@@ -1,9 +1,11 @@
 [tool.poetry]
+package-mode = false
 name = "pjecz-perseo-api-key"
 version = "1.0.0"
 description = "API con autentificación para realizar operaciones con la base de datos de Perseo."
 authors = ["Guillermo Valdes <guillermo@movimientolibre.com>"]
 license = "AGPL3"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"

@@ -12,8 +12,8 @@ from lib.fastapi_pagination_custom_page import CustomPage
 
 from ...core.permisos.models import Permiso
 from ..usuarios.authentications import UsuarioInDB, get_current_active_user
-from .crud import get_puestos, get_puesto_with_clave
-from .schemas import PuestoOut, OnePuestoOut
+from .crud import get_puesto_with_clave, get_puestos
+from .schemas import OnePuestoOut, PuestoOut
 
 puestos = APIRouter(prefix="/v4/puestos", tags=["puestos"])
 
