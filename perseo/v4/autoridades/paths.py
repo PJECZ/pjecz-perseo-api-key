@@ -13,7 +13,7 @@ from lib.fastapi_pagination_custom_page import CustomPage
 
 from ...core.permisos.models import Permiso
 from ..usuarios.authentications import UsuarioInDB, get_current_active_user
-from .crud import get_autoridades, get_autoridad_with_clave
+from .crud import get_autoridad_with_clave, get_autoridades
 from .schemas import AutoridadListOut, AutoridadOut, OneAutoridadOut
 
 autoridades = APIRouter(prefix="/v4/autoridades", tags=["autoridades"])

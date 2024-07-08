@@ -13,7 +13,7 @@ from lib.fastapi_pagination_custom_page import CustomPage
 from ...core.permisos.models import Permiso
 from ..usuarios.authentications import UsuarioInDB, get_current_active_user
 from .crud import get_persona_with_rfc, get_personas
-from .schemas import PersonaOut, OnePersonaOut
+from .schemas import OnePersonaOut, PersonaOut
 
 personas = APIRouter(prefix="/v4/personas", tags=["personas"])
 

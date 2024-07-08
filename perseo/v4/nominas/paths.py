@@ -12,7 +12,7 @@ from lib.fastapi_pagination_custom_page import CustomPage
 
 from ...core.permisos.models import Permiso
 from ..usuarios.authentications import UsuarioInDB, get_current_active_user
-from .crud import get_nominas, get_nomina
+from .crud import get_nomina, get_nominas
 from .schemas import NominaOut, OneNominaOut
 
 nominas = APIRouter(prefix="/v4/nominas", tags=["nominas"])

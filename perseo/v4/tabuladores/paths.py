@@ -12,8 +12,8 @@ from lib.fastapi_pagination_custom_page import CustomPage
 
 from ...core.permisos.models import Permiso
 from ..usuarios.authentications import UsuarioInDB, get_current_active_user
-from .crud import get_tabuladores, get_tabulador
-from .schemas import TabuladorOut, OneTabuladorOut
+from .crud import get_tabulador, get_tabuladores
+from .schemas import OneTabuladorOut, TabuladorOut
 
 tabuladores = APIRouter(prefix="/v4/tabuladores", tags=["tabuladores"])
 

@@ -60,7 +60,7 @@ class CustomPageParams(LimitOffsetParams):
     """
 
     offset: int = Query(0, ge=0, description="Page offset")
-    limit: int = Query(10, ge=1, le=100, description="Page size limit")
+    limit: int = Query(50, ge=1, le=500, description="Page size limit")
 
 
 T = TypeVar("T")
