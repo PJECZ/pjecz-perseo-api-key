@@ -47,7 +47,7 @@ class Nomina(Base, UniversalMixin):
     importe: Mapped[Decimal] = mapped_column(Numeric(precision=24, scale=4))
     num_cheque: Mapped[str] = mapped_column(String(24), default="", server_default="")
     fecha_pago: Mapped[date]
-    timbrado_is: Mapped[Optional[int]] = mapped_column(Integer(), nullable=True)
+    timbrado_id: Mapped[Optional[int]] = mapped_column(Integer(), nullable=True)
 
     # Hijos
     timbrados: Mapped[List["Timbrado"]] = relationship("Timbrado", back_populates="nomina")
