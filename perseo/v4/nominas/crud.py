@@ -24,7 +24,7 @@ def get_nominas(
     if rfc is not None:
         persona = get_persona_with_rfc(database, rfc)
         consulta = consulta.filter_by(persona_id=persona.id)
-    return consulta.filter_by(estatus="A").order_by(Nomina.id.desc())
+    return consulta.filter(Nomina.estatus == "A").order_by(Nomina.id.desc())
 
 
 def get_nomina(database: Session, nomina_id: int) -> Nomina:

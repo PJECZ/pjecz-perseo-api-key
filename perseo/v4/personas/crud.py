@@ -51,7 +51,7 @@ def get_personas(
         except ValueError as error:
             raise MyNotValidParamError(str(error)) from error
         consulta = consulta.filter(Persona.curp.contains(curp))
-    return consulta.filter_by(estatus="A").order_by(Persona.id)
+    return consulta.filter(Persona.estatus == "A").order_by(Persona.id)
 
 
 def get_persona(database: Session, persona_id: int) -> Persona:

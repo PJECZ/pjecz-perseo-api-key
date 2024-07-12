@@ -47,7 +47,7 @@ def get_usuarios(
         nombres = safe_string(nombres)
         if nombres != "":
             consulta = consulta.filter(Usuario.nombres.contains(nombres))
-    return consulta.filter_by(estatus="A").order_by(Usuario.email)
+    return consulta.filter(Usuario.estatus == "A").order_by(Usuario.email)
 
 
 def get_usuario(database: Session, usuario_id: int) -> Usuario:

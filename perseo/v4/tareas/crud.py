@@ -24,7 +24,7 @@ def get_tareas(
     elif usuario_email is not None:
         usuario = get_usuario_with_email(database, usuario_email)
         consulta = consulta.filter_by(usuario_id=usuario.id)
-    return consulta.filter_by(estatus="A").order_by(Tarea.id)
+    return consulta.filter(Tarea.estatus == "A").order_by(Tarea.id)
 
 
 def get_tarea(database: Session, tarea_id: int) -> Tarea:
