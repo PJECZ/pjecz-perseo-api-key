@@ -27,7 +27,7 @@ def get_timbrados(
     if rfc is not None:
         persona = get_persona_with_rfc(database, rfc)
         consulta = consulta.filter(Nomina.persona_id == persona.id)
-    return consulta.filter_by(estatus="A").order_by(Timbrado.id.desc())
+    return consulta.filter(Timbrado.estatus == "A").order_by(Timbrado.id.desc())
 
 
 def get_timbrado(database: Session, timbrado_id: int) -> Timbrado:

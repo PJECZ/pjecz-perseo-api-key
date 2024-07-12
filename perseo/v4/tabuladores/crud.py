@@ -20,7 +20,7 @@ def get_tabuladores(
     if puesto_id is not None:
         puesto = get_puesto(database, puesto_id)
         consulta = consulta.filter_by(puesto_id=puesto.id)
-    return consulta.filter_by(estatus="A").order_by(Tabulador.id)
+    return consulta.filter(Tabulador.estatus == "A").order_by(Tabulador.id)
 
 
 def get_tabulador(database: Session, tabulador_id: int) -> Tabulador:

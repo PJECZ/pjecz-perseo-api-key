@@ -28,7 +28,7 @@ def get_autoridades(
         consulta = consulta.filter_by(distrito_id=distrito.id)
     if es_extinto is not None:
         consulta = consulta.filter_by(es_extinto=es_extinto)
-    return consulta.filter_by(estatus="A").order_by(Autoridad.clave)
+    return consulta.filter(Autoridad.estatus == "A").order_by(Autoridad.clave)
 
 
 def get_autoridad(database: Session, autoridad_id: int) -> Autoridad:
