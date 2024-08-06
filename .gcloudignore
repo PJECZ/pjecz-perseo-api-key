@@ -5,12 +5,18 @@
 .gitignore
 .DS_Store
 
+*.code-workspace
 *.csv
+*.log
+*.odt
 *.py[cod]
+*.pdf
+*.sql
 *.sqlite3
 *.xlsx
 
 __pycache__/
+
 /.idea
 /.git
 /.github
