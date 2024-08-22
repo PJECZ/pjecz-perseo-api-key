@@ -24,6 +24,8 @@ class Nomina(Base, UniversalMixin):
         "DESPENSA": "DESPENSA",
         "SALARIO": "SALARIO",
         "EXTRAORDINARIO": "EXTRAORDINARIO",
+        "PENSION ALIMENTICIA": "PENSION ALIMENTICIA",
+        "PRIMA VACACIONAL": "PRIMA VACACIONAL",
     }
 
     # Nombre de la tabla
