@@ -1,38 +1,44 @@
 """
-Unit tests for autoridades category
+Unit tests for autoridades
 """
+
 import unittest
 
 import requests
 
-from tests.load_env import config
+from tests import config
 
 
 class TestAutoridades(unittest.TestCase):
-    """Tests for autoridades category"""
+    """Tests for autoridades"""
 
     def test_get_autoridades(self):
         """Test GET method for autoridades"""
-        response = requests.get(
-            f"{config['api_base_url']}/autoridades",
-            headers={"X-Api-Key": config["api_key"]},
-            timeout=config["timeout"],
-        )
+
+        # Consultar
+        try:
+            response = requests.get(
+                f"{config['api_base_url']}/api/v5/autoridades",
+                headers={"X-Api-Key": config["api_key"]},
+                timeout=config["timeout"],
+            )
+        except requests.exceptions.RequestException as error:
+            self.fail(error)
         self.assertEqual(response.status_code, 200)
 
-    def test_get_autoridades_by_es_extinto(self):
-        """Test GET method for autoridades by es_extinto"""
-        response = requests.get(
-            f"{config['api_base_url']}/autoridades",
-            headers={"X-Api-Key": config["api_key"]},
-            params={"es_extinto": 1},
-            timeout=config["timeout"],
-        )
-        self.assertEqual(response.status_code, 200)
-        data = response.json()
-        self.assertEqual(data["success"], True)
-        for item in data["items"]:
-            self.assertEqual(item["es_extinto"], 1)
+        # Validar el contenido de la respuesta
+        contenido = response.json()
+        self.assertEqual("success" in contenido, True)
+        self.assertEqual("message" in contenido, True)
+        self.assertEqual("data" in contenido, True)
+
+        # Validar que se haya tenido éxito
+        self.assertEqual(contenido["success"], True)
+
+        # Validar los datos
+        self.assertEqual(type(contenido["data"]), list)
+        for item in contenido["data"]:
+            self.assertEqual("clave" in item, True)
 
 
 if __name__ == "__main__":

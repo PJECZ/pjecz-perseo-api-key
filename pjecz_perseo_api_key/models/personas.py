@@ -3,7 +3,7 @@ Personas, modelos
 """
 
 from datetime import date
-from typing import List
+from typing import List, Optional
 
 from sqlalchemy import ForeignKey, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -40,12 +40,12 @@ class Persona(Base, UniversalMixin):
     apellido_primero: Mapped[str] = mapped_column(String(256), index=True)
     apellido_segundo: Mapped[str] = mapped_column(String(256), default="", server_default="")
     curp: Mapped[str] = mapped_column(String(18), default="", server_default="")
-    num_empleado: Mapped[int]
-    ingreso_gobierno_fecha: Mapped[date]
-    ingreso_pj_fecha: Mapped[date]
-    nacimiento_fecha: Mapped[date]
-    codigo_postal_fiscal: Mapped[int] = mapped_column(Integer, default=0)
-    seguridad_social: Mapped[str] = mapped_column(String(24))
+    num_empleado: Mapped[Optional[int]]
+    ingreso_gobierno_fecha: Mapped[Optional[date]]
+    ingreso_pj_fecha: Mapped[Optional[date]]
+    nacimiento_fecha: Mapped[Optional[date]]
+    codigo_postal_fiscal: Mapped[Optional[int]] = mapped_column(Integer, default=0)
+    seguridad_social: Mapped[Optional[str]] = mapped_column(String(24))
 
     # Columna modelo es entero del 1 al 6
     modelo: Mapped[int] = mapped_column(Integer, index=True)

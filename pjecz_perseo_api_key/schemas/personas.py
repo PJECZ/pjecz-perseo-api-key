@@ -19,12 +19,12 @@ class PersonaOut(BaseModel):
     apellido_primero: str
     apellido_segundo: str
     curp: str
-    num_empleado: int
-    ingreso_gobierno_fecha: date
-    ingreso_pj_fecha: date
-    nacimiento_fecha: date
-    codigo_postal_fiscal: int
-    seguridad_social: str
+    num_empleado: int | None
+    ingreso_gobierno_fecha: date | None
+    ingreso_pj_fecha: date | None
+    nacimiento_fecha: date | None
+    codigo_postal_fiscal: int | None
+    seguridad_social: str | None
     modelo: int
     nombre_completo: str
     model_config = ConfigDict(from_attributes=True)
