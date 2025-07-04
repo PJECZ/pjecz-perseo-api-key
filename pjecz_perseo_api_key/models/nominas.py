@@ -21,6 +21,8 @@ class Nomina(Base, UniversalMixin):
     TIPOS = {
         "AGUINALDO": "AGUINALDO",
         "APOYO ANUAL": "APOYO ANUAL",
+        "APOYO DIA DE LA MADRE": "APOYO DIA DE LA MADRE",
+        "ASIMILADO": "ASIMILADO",
         "DESPENSA": "DESPENSA",
         "SALARIO": "SALARIO",
         "EXTRAORDINARIO": "EXTRAORDINARIO",
