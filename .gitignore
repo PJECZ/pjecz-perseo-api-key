@@ -14,9 +14,10 @@
 *.xlsx
 
 __pycache__/
-*.egg-info/
 
 /poetry.lock
+/requirements.txt
 /.idea/
+/.poetry/
 /.venv/
 /venv/
