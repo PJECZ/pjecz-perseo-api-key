@@ -8,4 +8,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD [ "gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "-k", "uvicorn.workers.UvicornWorker", "perseo.app:create_app" ]
+CMD [ "gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "-k", "uvicorn.workers.UvicornWorker", "pjecz_perseo_api_key.main:app" ]
