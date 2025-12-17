@@ -16,14 +16,14 @@ jobs:
       - name: "Check out the repository"
         uses: "actions/checkout@v3"
 
-      - name: "Setup Python 3.11"
+      - name: "Setup Python 3.13"
         uses: "actions/setup-python@v4"
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: "Create requirements.txt from pyproject.toml with Poetry"
         run: |
-          pip install 'poetry>=2.0.1'
+          pip install 'poetry>=2.2.1'
           poetry self add poetry-plugin-export
           poetry export -f requirements.txt --output requirements.txt --without-hashes
 
